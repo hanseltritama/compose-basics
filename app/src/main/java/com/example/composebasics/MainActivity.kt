@@ -1,6 +1,5 @@
 package com.example.composebasics
 
-import android.content.res.Configuration
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -12,8 +11,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
@@ -60,18 +60,15 @@ fun MyApp() {
 }
 
 @Composable
-fun GreetingsView(names: List<String> = listOf("World", "Compose"), modifier: Modifier = Modifier) {
+fun GreetingsView(names: List<String> = List(1000) {"$it"}, modifier: Modifier = Modifier) {
     // A surface container using the 'background' color from the theme
     Surface(
         modifier = modifier,
         color = MaterialTheme.colorScheme.background
     ) {
-        Column(modifier = Modifier
-            .padding(
-                vertical = 4.dp
-            )
-        ) {
-            for (name in names) {
+        // this is equivalent to RecyclerView
+        LazyColumn(modifier = Modifier.padding(vertical = 4.dp)) {
+            items(items = names) {name ->
                 Greeting(name = name)
             }
         }
