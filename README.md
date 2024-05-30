@@ -46,6 +46,9 @@ fun GreetingsView(modifier: Modifier = Modifier) { // this parameter is best pra
 
 ## Column, Row, and Box
 These three composable functions are basic building blocks of Compose.
+Row --> Horizontal
+Column --> Vertical
+Box --> Z-index / on top of each other
 
 
 
